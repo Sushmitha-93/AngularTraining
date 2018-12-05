@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+  <!--The content below is only a placeholder and can be replaced.-->
+
+  <div class="container" style="text-align:center">
+
+    <h1>Welcome to Angular (App component)</h1>
+
+    <h4 [style.color]="mycolor">{{today}}</h4> <!-- put two "{" for typescipt vaiables -->
+
+    <app-features></app-features>
+    <app-inline-comp></app-inline-comp>
+
+    <h4>Interpolation using double flower brackets {{'{'}}</h4>
+    <table class="table table-striped table-bordered col-sm-6 offset-md-3">
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Product Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td>{{prod.pid}}</td>
+        <td>{{prod.pname}}</td>
+        <td>{{prod.price}}</td>
+      </tbody>
+    </table>
+
+    <h3>Event Binding</h3>
+    <button (click)="sayHello()">Event Binding</button>
+    <br><br>
+    <div class="card col-md-4 offset-md-4">
+      <div class="card-header">
+        <h2>Counter</h2>
+      </div>
+      <div class="card-body">
+        <h3>{{counter}}</h3>
+        <div class="card-footer">
+          <button (click)="increment()">Increment</button>
+          <button (click)="decrement()">Decrement</button>
+        </div>
+      </div>
+    </div><br>
+    <h4>Two way binding</h4>
+    <!--ngModel for 2 way binding-->
+    <input type="text" name="uname" [(ngModel)]="mytext"><br>{{mytext}}
+    <br><br>
+
+    <h2>*ngIf</h2>
+    <button (click)="show=!show">{{show?'Hide':'Show'}}</button>
+    <h3 *ngIf="show">Hello</h3><br><br>
+
+    <h3>*ngSwitch</h3>
+    Enter the number: <input type="text" [(ngModel)]="guessColor">
+    <div [ngSwitch]="guessColor">
+      <p *ngSwitchCase="1" style="background-color:red"> Red</p>
+      <p *ngSwitchCase="2" style="background-color:blue"> Blue</p>
+      <p *ngSwitchCase="3" style="background-color:green"> Green</p>
+      <p *ngSwitchCase="4" style="background-color:yellow"> Yellow</p>
+      <p *ngSwitchDefault>No color matched </p>
+    </div><br>
+
+    <h3>Attribute Directive: ngClass/ngStyle</h3>
+    <button (click)="cOne=!cOne">Toggle Class</button><br><br>
+    <div [ngClass]="{myClass:cOne}">ngClass</div>
+    <div [ngStyle]="{'background-color':'lightgreen'}">ngStyle</div>
+    <div [ngStyle]="{'background-color': mycolor,'color':'white'}">ngStyle by mapping vairable to property</div>
+
+    <br><br>
+    <h3 appMyHilighter>Custom Directive</h3>
+  </div>
+</body>
+
+</html>
